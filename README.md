@@ -51,16 +51,18 @@ This plugin collect "sar command result" every (interval) minutes.
     w     Report task creation and system switching activity.
     W     Report swapping statistics.
 
+
    Not support
-    A
-    C    
-    d
-    I     
-    j
-    n
-    P
-    p         
-    y
+   
+        A
+        C    
+        d
+        I     
+        j
+        n
+        P
+        p         
+        y
 
 - tag 
 
@@ -71,12 +73,14 @@ This plugin collect "sar command result" every (interval) minutes.
 
 
     (optional | defalut : 5)
+    
     every (interval) minutes.
 
 - hostname_output
 
 
     (optional | defalut : True)
+    
     true or false
 
 - hostname
