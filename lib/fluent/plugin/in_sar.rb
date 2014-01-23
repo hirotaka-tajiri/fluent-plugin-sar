@@ -53,7 +53,6 @@ class SarInput < Fluent::Input
         th.each {| t | t.join }
 
         rec
-end
-
+    end
 end
 
