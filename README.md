@@ -23,13 +23,13 @@ This plugin collect "sar command result" every (interval) minutes.
 ## Configuration
 ### Parameters:
 
-- sar_command_path
+#### sar_command_path
 
     (required)
     
     your server's "sar" command path
 
-- sar_option
++ sar_option
 
     (required)
     
