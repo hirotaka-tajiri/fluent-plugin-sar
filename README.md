@@ -23,13 +23,15 @@ This plugin collect "sar command result" every (interval) minutes.
 ## Configuration
 ### Parameters:
 
-#### sar_command_path
++ sar_command_path
+
 
     (required)
     
     your server's "sar" command path
 
 + sar_option
+
 
     (required)
     
@@ -62,19 +64,23 @@ This plugin collect "sar command result" every (interval) minutes.
 
 - tag 
 
+
     (optional | default : "sar_result.tag")
 
 - interval
+
 
     (optional | defalut : 5)
     every (interval) minutes.
 
 - hostname_output
 
+
     (optional | defalut : True)
     true or false
 
 - hostname
+
 
     (optionl |  defalut : your server's hostname)
 
