@@ -25,7 +25,7 @@ This plugin collect "sar command result" every (interval) minutes.
 
 - sar_command_path
 
---    (required)
+    (required)
     
     your server's "sar" command path
 
