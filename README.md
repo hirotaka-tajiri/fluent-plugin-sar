@@ -23,9 +23,9 @@ This plugin collect "sar command result" every (interval) minutes.
 ## Configuration
 ### Parameters:
 
--sar_command_path (required)
+- sar_command_path (required)
     your server's "sar" command path
--sar_option (required)
+- sar_option (required)
     same sar option, but not all.
 
     e.g.) sysstat version 9.0.4 on CentOS 6.5
@@ -52,12 +52,12 @@ This plugin collect "sar command result" every (interval) minutes.
          P
          p         
          y
--tag (optional | default : "sar_result.tag")
--interval (optional | defalut : 5)
+- tag (optional | default : "sar_result.tag")
+- interval (optional | defalut : 5)
     every (interval) minutes.
--hostname_output (optional | defalut : True)
+- hostname_output (optional | defalut : True)
     true or false
--hostname (optionl |  defalut : your server's hostname)
+- hostname (optionl |  defalut : your server's hostname)
 
 ### Example:
 
