@@ -29,29 +29,29 @@ This plugin collect "sar command result" every (interval) minutes.
     same sar option, but not all.
 
     e.g.) sysstat version 9.0.4 on CentOS 6.5
-       Support
-         b     Report I/O and transfer rate statistics.  
-         B     Report paging statistics. Some of the metrics below are available only with post 2.5 kernels. 
-         m     Report power management statistics.  Note that these statistics depend on sadc option "-S POWER"  to  be  collected. 
-         q     Report queue length and load averages.
-         r     Report memory utilization statistics.  
-         R     Report memory statistics. 
-         S     Report swap space utilization statistics.
-         u     Report  CPU  utilization.
-         v     Report status of inode, file and other kernel tables.
-         w     Report task creation and system switching activity.
-         W     Report swapping statistics.
+   Support
+    b     Report I/O and transfer rate statistics.  
+    B     Report paging statistics. Some of the metrics below are available only with post 2.5 kernels. 
+    m     Report power management statistics.  Note that these statistics depend on sadc option "-S POWER"  to  be  collected. 
+    q     Report queue length and load averages.
+    r     Report memory utilization statistics.  
+    R     Report memory statistics. 
+    S     Report swap space utilization statistics.
+    u     Report  CPU  utilization.
+    v     Report status of inode, file and other kernel tables.
+    w     Report task creation and system switching activity.
+    W     Report swapping statistics.
 
-       Not support
-         A
-         C    
-         d
-         I     
-         j
-         n
-         P
-         p         
-         y
+   Not support
+    A
+    C    
+    d
+    I     
+    j
+    n
+    P
+    p         
+    y
 - tag (optional | default : "sar_result.tag")
 - interval (optional | defalut : 5)
     every (interval) minutes.
