@@ -25,12 +25,14 @@ This plugin collect "sar command result" every (interval) minutes.
 
 - sar_command_path
 
-    (required)
+--    (required)
+    
     your server's "sar" command path
 
 - sar_option
 
     (required)
+    
     same sar option, but not all.
 
     e.g.) sysstat version 9.0.4 on CentOS 6.5
