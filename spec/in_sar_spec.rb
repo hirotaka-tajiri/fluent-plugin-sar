@@ -14,7 +14,7 @@ describe "SarInput" do
     ]
     CONF_D = %[
         type sar
-        sar_option         u
+        sar_option        u
     ]
     CNF_I1 = %[
         type sar
