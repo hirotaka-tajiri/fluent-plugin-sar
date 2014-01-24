@@ -1,7 +1,7 @@
 # Fluent::Plugin::Sar
 
 Fluentd input plugin to get sar result
-
+This plugin needs "sysstat".
 ## Installation
 
 Add this line to your application's Gemfile:
