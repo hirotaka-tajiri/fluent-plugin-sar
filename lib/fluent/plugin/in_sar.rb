@@ -1,7 +1,6 @@
 class SarInput < Fluent::Input
     Fluent::Plugin.register_input('sar', self)
 
-    config_param :sar_command_path, :string,  default: '' 
     config_param :sar_option,       :string,  default: ''
     config_param :tag,              :string,  default: 'sar_result.tag'
     config_param :interval,         :integer, default: 5
@@ -11,8 +10,12 @@ class SarInput < Fluent::Input
     def configure(conf)
         super
         @interval_m = @sar_option.split.size.zero? ? @interval * 60 : @interval * 60 - 1
-        raise Fluent::ConfigError, "Required config_parameter : sar_command_path"               if     @sar_command_path.size.zero?
-        raise Fluent::ConfigError, "sar is not exists.(sar_command_path: #{@sar_command_path})" unless File.exists?(@sar_command_path)
+        begin
+           `sar -V`
+           raise Fluent::ConfigError, "sar_option contains illegal characters.(sar_option: #{@sar_option})" if /[^a-zA-Z ]+/ =~ @sar_option
+        rescue
+           raise Fluent::ConfigError, "sar(sysstat) is not installed."
+        end
     end
 
     def start
@@ -45,7 +48,7 @@ class SarInput < Fluent::Input
         opt_ary.each {| opt |
             th << Thread.new {
                 i = 0
-                `LANG=C #{@sar_command_path} -#{opt} 1 1 | grep -vi average | tail -n2`.split("\n").each{| a | rlt[(i += 1)] = a.split }
+                `LANG=C sar -#{opt} 1 1 | grep -vi average | tail -n2`.split("\n").each{| a | rlt[(i += 1)] = a.split }
                 rlt[1][0].sub!(/[0-9]{2}\:[0-9]{2}\:[0-9]{2}/, "check_time")
                 rec.merge!(Hash[*rlt[1].zip(rlt[2]).flatten])
             }
