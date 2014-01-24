@@ -31,7 +31,6 @@ class SarInput < Fluent::Input
 
     def run
         loop do
-        
             @result             = Hash.new
             @result["hostname"] = @hostname if @hostname_output
             Fluent::Engine.emit(@tag, Fluent::Engine.now, @result.merge(sar_execute(@sar_option.split)))
