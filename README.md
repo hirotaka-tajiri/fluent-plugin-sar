@@ -1,7 +1,6 @@
 # Fluent::Plugin::Sar
 
 Fluentd input plugin to get sar result
-
 This plugin needs "sysstat".
 
 ## Installation
