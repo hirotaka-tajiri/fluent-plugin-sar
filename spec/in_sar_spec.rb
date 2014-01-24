@@ -6,7 +6,6 @@ describe "SarInput" do
 
     CONFIG = %[
         type              sar
-        sar_command_path  /usr/bin/sar
         sar_option        u q r b w B R S v W
         tag               sar.tag
         interval          10
@@ -15,27 +14,35 @@ describe "SarInput" do
     ]
     CONF_D = %[
         type sar
+        sar_option         u
+    ]
+    CNF_I1 = %[
+        type sar
         sar_command_path  /usr/bin/sar
+        sar_option |
     ]
-    CONF_E = %[
+    CNF_I2 = %[
         type sar
+        sar_command_path  /usr/bin/sar
+        sar_option |;
     ]
-    CONF_F = %[
+    CNF_I3 = %[
         type sar
-        sar_command_path  /usr/local/bin/sar
+        sar_command_path  /usr/bin/sar
+        sar_option a ;rm b
     ]
-  
+
+    def create_driver(conf)
+        Fluent::Test::InputTestDriver.new(SarInput).configure(conf)
+    end
 
   describe "config test" do
 
         let(:driver)  { Fluent::Test::InputTestDriver.new(SarInput).configure(CONFIG) }
         let(:driver1) { Fluent::Test::InputTestDriver.new(SarInput).configure(CONF_D) }
-        let(:driver2) { Fluent::Test::InputTestDriver.new(SarInput).configure(CONF_E) }
-        let(:driver3) { Fluent::Test::InputTestDriver.new(SarInput).configure(CONF_F) }
 
     context "Test config F " do
         subject { driver.instance }
-        its (:sar_command_path) { should eq "/usr/bin/sar" }
         its (:sar_option)       { should eq "u q r b w B R S v W" }
         its (:tag)              { should eq "sar.tag" }
         its (:interval)         { should eq 10 }
@@ -45,8 +52,7 @@ describe "SarInput" do
 
     context "Test config defalut " do
         subject { driver1.instance }
-        its (:sar_command_path) { should eq "/usr/bin/sar" }
-        its (:sar_option)       { should eq '' }
+        its (:sar_option)       { should eq 'u' }
         its (:tag)              { should eq 'sar_result.tag' }
         its (:interval)         { should eq 5 }
         its (:hostname_output)  { should eq true }
@@ -54,8 +60,9 @@ describe "SarInput" do
     end
 
     context "Test config raise error" do
-        it { lambda{ driver2 }.should raise_error(Fluent::ConfigError) }
-        it { lambda{ driver3 }.should raise_error(Fluent::ConfigError) }
+        it { expect(lambda{create_driver(CNF_I1)}).to raise_error(Fluent::ConfigError) }
+        it { expect(lambda{create_driver(CNF_I2)}).to raise_error(Fluent::ConfigError) }
+        it { expect(lambda{create_driver(CNF_I3)}).to raise_error(Fluent::ConfigError) }
     end
   end
 end
