@@ -23,13 +23,6 @@ This plugin collect "sar command result" every (interval) minutes.
 ## Configuration
 ### Parameters:
 
-+ sar_command_path
-
-
-    (required)
-    
-    your server's "sar" command path
-
 + sar_option
 
 
@@ -93,7 +86,6 @@ This plugin collect "sar command result" every (interval) minutes.
 
     <source>
         type              sar
-        sar_command_path  /usr/bin/sar
         sar_option        u q
         tag               sar.tag
         interval          10
