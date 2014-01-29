@@ -5,7 +5,7 @@ $:.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-sar"
-  spec.version       = "0.0.3"
+  spec.version       = "0.0.4"
   spec.authors       = ["Hirotaka Tajiri"]
   spec.email         = ["ganryu_koziro@excite.co.jp"]
   spec.homepage      = "https://github.com/hirotaka-tajiri/fluent-plugin-sar"
