@@ -40,16 +40,15 @@ class SarInput < Fluent::Input
 
     def sar_execute(opt_ary)
 
-        rlt = Hash.new{| k, v | Hash[k] = Hash.new }
+        rlt = Hash.new {| k, v | hash[k] = Hash.new }
         rec = Hash.new
         th  = Array.new
 
         opt_ary.each {| opt |
             th << Thread.new {
-                i = 0
-                `LANG=C sar -#{opt} 1 1 | grep -vi average | tail -n2`.split("\n").each{| a | rlt[(i += 1)] = a.split }
-                rlt[1][0].sub!(/[0-9]{2}\:[0-9]{2}\:[0-9]{2}/, "check_time")
-                rec.merge!(Hash[*rlt[1].zip(rlt[2]).flatten])
+                `LANG=C sar -#{opt} 1 1 | grep -vi average | tail -n2`.split("\n").each_with_index {| a, i | rlt[i] = a.split }
+                rlt[0][0].sub!(/[0-9]{2}\:[0-9]{2}\:[0-9]{2}/, "check_time")
+                rec.merge!(Hash[*rlt[0].zip(rlt[1]).flatten])
             }
         }
         th.each {| t | t.join }
