@@ -56,4 +56,3 @@ class SarInput < Fluent::Input
         rec
     end
 end
-
