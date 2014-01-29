@@ -40,7 +40,7 @@ class SarInput < Fluent::Input
 
     def sar_execute(opt_ary)
 
-        rlt = Hash.new {| k, v | hash[k] = Hash.new }
+        rlt = Hash.new {| k, v | h[k] = Hash.new }
         rec = Hash.new
         th  = Array.new
 
