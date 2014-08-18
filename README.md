@@ -82,7 +82,7 @@ This plugin collect "sar command result" every (interval) minutes.
 - hostname
 
 
-    (optionl |  defalut : your server's hostname)
+    (optional |  defalut : your server's hostname)
 
 ### Example:
 
