@@ -1,4 +1,4 @@
-# Fluent::Plugin::Sar
+# Fluent::Plugin::Sar, a plugin for [Fluentd](http://fluentd.org)
 
 Fluentd input plugin to get sar result.
 
