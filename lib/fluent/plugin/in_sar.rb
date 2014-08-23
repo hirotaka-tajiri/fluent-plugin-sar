@@ -48,6 +48,7 @@ class SarInput < Fluent::Input
             th << Thread.new {
                 `LANG=C sar -#{opt} 1 1 | grep -vi average | tail -n2`.split("\n").each_with_index {| a, i | rlt[i] = a.split }
                 rlt[0][0].sub!(/[0-9]{2}\:[0-9]{2}\:[0-9]{2}/, "check_time")
+                rlt[1].map! { |v| v = v.to_f if v.count('a-zA-Z:') == 0 }
                 rec.merge!(Hash[*rlt[0].zip(rlt[1]).flatten])
             }
         }
